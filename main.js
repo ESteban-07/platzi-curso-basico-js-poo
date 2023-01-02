@@ -1,65 +1,90 @@
-// Objeto Literal no instanciado de un prototipo creado por el desarrollador
-const natalia = {
-    name: 'Natalia',
-    age: 20,
-    cursosAprobados: [
-        'Curso Definitivo de HTML Y CSS',
-        'Curso Práctico de HTML y CSS',
-    ],
-    aprobarCurso(nuevoCursito) {
-        this.cursosAprobados.push(nuevoCursito);
-    },
-};
+class LearningPath {
+    constructor({ name, courses = [] }) {
+        this.name = name;
+        this.courses = courses;
+    }
 
-// Creando un Prototipo de función
-function Student(name, age, cursosAprobados) {
-    this.name = name;
-    this.age = age;
-    this.cursosAprobados = cursosAprobados;
+    addCourse(course) {
+        this.courses.push(course);
+    }
+
+    removeCourse(course) {
+        const index = this.courses.indexOf(course);
+        return this.courses.splice(index, 1);
+    }
 }
 
-// Debemos crear métodos directamente en el Prototipo
-// Para evitar un consumo innecesario de cursos
-Student.prototype.aprobarCurso = function (nuevoCursito) {
-    this.cursosAprobados.push(nuevoCursito);
-};
+const escuelaWeb = new LearningPath({
+    name: 'Escuela de Desarrollo Web',
+    courses: [
+        'Curso Definitivo de HTML y CSS',
+        'Curso Práctico de HTML y CSS',
+        'Curso Profesional de Git y Github',
+    ],
+});
 
-// Instancia de prototipo de función Student
-const juanita = new Student('Juanita Alejandra', 15, [
-    'Curso de Introducción a los Producción de Videojuegos',
-    'Curso de Creación de Personajes',
-]);
+const escuelaData = new LearningPath({
+    name: 'Escuela de Data Science e IA',
+    courses: [
+        'Cómo y Por Qué Aprender Data Science e IA',
+        'Curso de Análisis de Negocios para Ciencia de Datos',
+        'Curso de Ética y Manejo de Datos para Data Science e IA',
+    ],
+});
 
-// Prototipos con la sintaxis de clases
-class Student2 {
-    /*
-    Aplicando Patrón de diseño RORO (Receive an Object, Return an Object)
-    ---------------------------------------------------------------------
+const escuelaVdgs = new LearningPath({
+    name: 'Escuela de Videojuegos',
+    courses: [
+        'Curso de Programación de Videojuegos 2D con Unity',
+        'Curso de Introducción a la Programación de Videojuegos 3D con Unity',
+        'Curso de VR con Unity',
+    ],
+});
 
-    Nos ayuda cuando tenemos muchos parámetros en nuestro constructor,
-    ya que al instanciar la clase debemos acordarnos del orden de los
-    parámetros y, además, no podemos tener parámetros por defecto.
-
-    La versatilidad de tener un objeto literal dentro de la función 
-    constructor facilita todo, ya que un objeto literal esta constituido
-    por el par “key:value” donde la analogía que se puede tener presente
-    es la de “parámetro:argumento” a la hora de crear nuestro objeto.
-    */
-    constructor({ name, age, cursosAprobados = [], email }) {
+class Student {
+    constructor({
+        name,
+        email,
+        username,
+        twitter = undefined,
+        instagram = undefined,
+        facebook = undefined,
+        approvedCourses = [],
+        learningPaths = [],
+    }) {
         this.name = name;
         this.email = email;
-        this.age = age;
-        this.cursosAprobados = cursosAprobados;
+        this.username = username;
+        this.socialMedia = {
+            twitter,
+            instagram,
+            facebook,
+        };
+        this.approvedCourses = approvedCourses;
+        this.learningPaths = learningPaths;
     }
 
-    aprobarCurso(nuevoCursito) {
-        this.cursosAprobados.push(nuevoCursito);
+    addLearningPath(escuela) {
+        this.learningPaths.push(escuela);
+    }
+
+    removeLearningPath(escuela) {
+        const index = this.learningPaths.indexOf(escuela);
+
+        return this.learningPaths.splice(index, 1);
     }
 }
 
-// instancia de la clase Student2 basada en prototipos
-const miguelito = new Student2({
-    name: 'Miguel',
-    age: 28,
-    email: 'miguelito@platzi.com',
+const juan2 = new Student({
+    name: 'JuanDC',
+    username: 'juandc',
+    email: 'juanito@juanito.com',
+    twitter: 'fjuandc',
+});
+
+const miguelito2 = new Student({
+    name: 'Miguelito',
+    username: 'miguelitofeliz',
+    email: 'miguelito@miguelito.com',
+    instagram: 'miguelito_feliz',
 });
