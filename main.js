@@ -1,3 +1,133 @@
+/* ---------- LESSONS ---------- */
+
+class Lesson {
+    constructor({ id, title }) {
+        this.id = id;
+        this.title = title;
+    }
+}
+
+const lesson1PB = new Lesson({
+    id: 1,
+    title: 'Clase 1 de Programación Básica',
+});
+
+const lesson2PB = new Lesson({
+    id: 2,
+    title: 'Clase 2 de Programación Básica',
+});
+
+const lesson1DefHTML = new Lesson({
+    id: 1,
+    title: 'Clase 1 del Curso Definitivo de HTML',
+});
+
+const lesson2DefHTML = new Lesson({
+    id: 2,
+    title: 'Clase 2 del Curso Definitivo de HTML',
+});
+
+const lesson1PractHTML = new Lesson({
+    id: 1,
+    title: 'Clase 1 del Curso Práctico de HTML',
+});
+
+const lesson2PractHTML = new Lesson({
+    id: 2,
+    title: 'Clase 2 del Curso Práctico de HTML',
+});
+
+const lesson1DataViz = new Lesson({
+    id: 1,
+    title: 'Clase 1 del Curso de Visualización de Datos',
+});
+
+const lesson2DataViz = new Lesson({
+    id: 2,
+    title: 'Clase 2 del Curso de Visualización de Datos',
+});
+
+const lesson1BI = new Lesson({
+    id: 1,
+    title: 'Clase 1 del Curso de BI',
+});
+
+const lesson2BI = new Lesson({
+    id: 2,
+    title: 'Clase 2 del Curso de BI',
+});
+
+const lesson1Unity = new Lesson({
+    id: 1,
+    title: 'Clase 1 del Curso de Unity',
+});
+
+const lesson2Unity = new Lesson({
+    id: 2,
+    title: 'Clase 2 del Curso de Unity',
+});
+
+const lesson1Unreal = new Lesson({
+    id: 1,
+    title: 'Clase 1 del Curso de Unreal',
+});
+
+const lesson2Unreal = new Lesson({
+    id: 2,
+    title: 'Clase 2 del Curso de Unreal',
+});
+
+/* ---------- COURSES ---------- */
+
+class Course {
+    constructor({ name, lessons = [] }) {
+        this.name = name;
+        this.lessons = lessons;
+        this.teachers = [];
+    }
+
+    addNewLesson(lesson) {
+        this.lessons.push(lesson);
+    }
+}
+
+const cursoProgBasica = new Course({
+    name: 'Curso Gratis de Programación Básica',
+    lessons: [lesson1PB, lesson2PB],
+});
+
+const cursoDefinitivoHTML = new Course({
+    name: 'Curso Definitivo de HTML y CSS',
+    lessons: [lesson1DefHTML, lesson2DefHTML],
+});
+
+const cursoPracticoHTML = new Course({
+    name: 'Curso Práctico de HTML y CSS',
+    lessons: [lesson1PractHTML, lesson2PractHTML],
+});
+
+const cursoDataViz = new Course({
+    name: 'Curso de Principios de Visualización de Datos para Business Intelligence',
+    lessons: [lesson1DataViz, lesson2DataViz],
+});
+
+const cursoBI = new Course({
+    name: 'Curso de Business Intelligence: Utilidad y Áreas de Oportunidad',
+    lessons: [lesson1BI, lesson2BI],
+});
+
+const cursoUnity = new Course({
+    name: 'Curso de Unity',
+    lessons: [lesson1Unity, lesson2Unity],
+});
+
+const cursoUnreal = new Course({
+    name: 'Curso de Unreal Engine',
+    lessons: [lesson1Unreal, lesson2Unreal],
+});
+
+/* ---------- LEARNING PATHS ---------- */
+
 class LearningPath {
     constructor({ name, courses = [] }) {
         this.name = name;
@@ -16,30 +146,20 @@ class LearningPath {
 
 const escuelaWeb = new LearningPath({
     name: 'Escuela de Desarrollo Web',
-    courses: [
-        'Curso Definitivo de HTML y CSS',
-        'Curso Práctico de HTML y CSS',
-        'Curso Profesional de Git y Github',
-    ],
+    courses: [cursoProgBasica, cursoDefinitivoHTML, cursoPracticoHTML],
 });
 
 const escuelaData = new LearningPath({
     name: 'Escuela de Data Science e IA',
-    courses: [
-        'Cómo y Por Qué Aprender Data Science e IA',
-        'Curso de Análisis de Negocios para Ciencia de Datos',
-        'Curso de Ética y Manejo de Datos para Data Science e IA',
-    ],
+    courses: [cursoProgBasica, cursoDataViz, cursoBI],
 });
 
 const escuelaVdgs = new LearningPath({
     name: 'Escuela de Videojuegos',
-    courses: [
-        'Curso de Programación de Videojuegos 2D con Unity',
-        'Curso de Introducción a la Programación de Videojuegos 3D con Unity',
-        'Curso de VR con Unity',
-    ],
+    courses: [cursoProgBasica, cursoUnity, cursoUnreal],
 });
+
+/* ---------- STUDENTS ---------- */
 
 class Student {
     constructor({
@@ -80,6 +200,7 @@ const juan2 = new Student({
     username: 'juandc',
     email: 'juanito@juanito.com',
     twitter: 'fjuandc',
+    learningPaths: [escuelaWeb, escuelaVdgs],
 });
 
 const miguelito2 = new Student({
@@ -87,72 +208,5 @@ const miguelito2 = new Student({
     username: 'miguelitofeliz',
     email: 'miguelito@miguelito.com',
     instagram: 'miguelito_feliz',
+    learningPaths: [escuelaWeb, escuelaData],
 });
-
-/*
-Dadas la siguientes clases:
-
-Clase Banda con las propiedades:
-
-nombre - string
-generos - Array
-integrantes - Array
-Crea una clase llamada "Integrante" con las propiedades:
-
-nombre - string
-instrumento - string
-
-Escribe la lógica para agregar integrantes a la clase Banda
-en la función agregarIntegrante. En esta función no debe dejar
-agregar más de un baterista, es decir hay que validar que solo
-se pueda agregar un integrante con instrumento "Bateria".
-*/
-
-// SOLUCIÓN:
-
-class Banda {
-    constructor({ nombre, generos = [] }) {
-        this.nombre = nombre;
-        this.generos = generos;
-        this.integrantes = [];
-    }
-
-    agregarIntegrante(integranteNuevo) {
-        const tenemosBaterista = this.integrantes.some(
-            (integrante) => integrante.instrumento === 'Bateria'
-        );
-
-        const nuevoIntegranteBaterista =
-            integranteNuevo.instrumento === 'Bateria';
-
-        // Validar si ya existe un baterista
-        if (tenemosBaterista && nuevoIntegranteBaterista) {
-            return;
-        }
-
-        this.integrantes.push(integranteNuevo);
-    }
-}
-
-//Crear clase Integrante
-class Integrante {
-    constructor({ nombre, instrumento }) {
-        this.nombre = nombre;
-        this.instrumento = instrumento;
-    }
-}
-
-const data = {
-    nombre: 'Los Jacks',
-    generos: ['rock', 'pop', 'post-punk'],
-    integrantes: [],
-};
-const banda = new Banda(data);
-
-banda.agregarIntegrante(
-    new Integrante({ nombre: 'Elijah', instrumento: 'Guitarra' })
-);
-
-banda.agregarIntegrante(
-    new Integrante({ nombre: 'Joshua', instrumento: 'Bateria' })
-);
