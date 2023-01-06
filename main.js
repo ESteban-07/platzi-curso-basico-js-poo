@@ -167,8 +167,3 @@ const miguelito2 = new Student({
     instagram: 'miguelito_feliz',
     learningPaths: [escuelaWeb, escuelaData],
 });
-
-console.log({
-    juan2,
-    miguelito2,
-});
