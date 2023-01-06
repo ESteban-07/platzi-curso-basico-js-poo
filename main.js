@@ -1,22 +1,12 @@
-/* ---------- TEACHERS ---------- */
+import {
+    LearningPath,
+    Student,
+    Course,
+    Teacher,
+    Lesson,
+} from './routes/routes.js';
 
-class Teacher {
-    constructor({
-        name,
-        speciality,
-        twitter = undefined,
-        facebook = undefined,
-        instagram = undefined,
-    }) {
-        this.name = name;
-        this.speciality = speciality;
-        this.socialMedia = {
-            twitter,
-            facebook,
-            instagram,
-        };
-    }
-}
+/* ---------- TEACHERS ---------- */
 
 const teacherFreddyVega = new Teacher({
     name: 'Freddy Vega',
@@ -34,13 +24,6 @@ const teacherJuanDC = new Teacher({
 });
 
 /* ---------- LESSONS ---------- */
-
-class Lesson {
-    constructor({ id, title }) {
-        this.id = id;
-        this.title = title;
-    }
-}
 
 const lesson1PB = new Lesson({
     id: 1,
@@ -114,22 +97,6 @@ const lesson2Unreal = new Lesson({
 
 /* ---------- COURSES ---------- */
 
-class Course {
-    constructor({ name, lessons = [], teachers = [] }) {
-        this.name = name;
-        this.lessons = lessons;
-        this.teachers = teachers;
-    }
-
-    addNewLesson(lesson) {
-        this.lessons.push(lesson);
-    }
-
-    addNewTeacher(teacher) {
-        this.teachers.push(teacher);
-    }
-}
-
 const cursoProgBasica = new Course({
     name: 'Curso Gratis de Programación Básica',
     lessons: [lesson1PB, lesson2PB],
@@ -168,22 +135,6 @@ const cursoUnreal = new Course({
 
 /* ---------- LEARNING PATHS ---------- */
 
-class LearningPath {
-    constructor({ name, courses = [] }) {
-        this.name = name;
-        this.courses = courses;
-    }
-
-    addCourse(course) {
-        this.courses.push(course);
-    }
-
-    removeCourse(course) {
-        const index = this.courses.indexOf(course);
-        return this.courses.splice(index, 1);
-    }
-}
-
 const escuelaWeb = new LearningPath({
     name: 'Escuela de Desarrollo Web',
     courses: [cursoProgBasica, cursoDefinitivoHTML, cursoPracticoHTML],
@@ -201,40 +152,6 @@ const escuelaVdgs = new LearningPath({
 
 /* ---------- STUDENTS ---------- */
 
-class Student {
-    constructor({
-        name,
-        email,
-        username,
-        twitter = undefined,
-        instagram = undefined,
-        facebook = undefined,
-        approvedCourses = [],
-        learningPaths = [],
-    }) {
-        this.name = name;
-        this.email = email;
-        this.username = username;
-        this.socialMedia = {
-            twitter,
-            instagram,
-            facebook,
-        };
-        this.approvedCourses = approvedCourses;
-        this.learningPaths = learningPaths;
-    }
-
-    addLearningPath(escuela) {
-        this.learningPaths.push(escuela);
-    }
-
-    removeLearningPath(escuela) {
-        const index = this.learningPaths.indexOf(escuela);
-
-        return this.learningPaths.splice(index, 1);
-    }
-}
-
 const juan2 = new Student({
     name: 'JuanDC',
     username: 'juandc',
@@ -249,4 +166,9 @@ const miguelito2 = new Student({
     email: 'miguelito@miguelito.com',
     instagram: 'miguelito_feliz',
     learningPaths: [escuelaWeb, escuelaData],
+});
+
+console.log({
+    juan2,
+    miguelito2,
 });
