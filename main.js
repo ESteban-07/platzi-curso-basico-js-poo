@@ -1,3 +1,38 @@
+/* ---------- TEACHERS ---------- */
+
+class Teacher {
+    constructor({
+        name,
+        speciality,
+        twitter = undefined,
+        facebook = undefined,
+        instagram = undefined,
+    }) {
+        this.name = name;
+        this.speciality = speciality;
+        this.socialMedia = {
+            twitter,
+            facebook,
+            instagram,
+        };
+    }
+}
+
+const teacherFreddyVega = new Teacher({
+    name: 'Freddy Vega',
+    speciality: 'CEO of Platzi',
+    twitter: '@freddier',
+    instagram: '@freddiervega',
+    facebook: 'John Freddy Vega',
+});
+
+const teacherJuanDC = new Teacher({
+    name: 'Juan Gallegos',
+    speciality: 'Course Director at Platzi',
+    twitter: '@fjuandc',
+    instagram: '@fjuandc',
+});
+
 /* ---------- LESSONS ---------- */
 
 class Lesson {
@@ -80,20 +115,25 @@ const lesson2Unreal = new Lesson({
 /* ---------- COURSES ---------- */
 
 class Course {
-    constructor({ name, lessons = [] }) {
+    constructor({ name, lessons = [], teachers = [] }) {
         this.name = name;
         this.lessons = lessons;
-        this.teachers = [];
+        this.teachers = teachers;
     }
 
     addNewLesson(lesson) {
         this.lessons.push(lesson);
+    }
+
+    addNewTeacher(teacher) {
+        this.teachers.push(teacher);
     }
 }
 
 const cursoProgBasica = new Course({
     name: 'Curso Gratis de Programación Básica',
     lessons: [lesson1PB, lesson2PB],
+    teachers: [teacherFreddyVega, teacherJuanDC],
 });
 
 const cursoDefinitivoHTML = new Course({
