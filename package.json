@@ -1,0 +1,23 @@
+{
+  "name": "platzi-curso-basico-js-poo",
+  "version": "1.0.0",
+  "description": "Curso Básico de Programación Orientada a Objetos con JavaScript de Platzi💚",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pretty": "prettier --write \"./**/*.{html,css,js,jsx,json}\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ESteban-07/platzi-curso-basico-js-poo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ESteban-07/platzi-curso-basico-js-poo/issues"
+  },
+  "homepage": "https://github.com/ESteban-07/platzi-curso-basico-js-poo#readme",
+  "devDependencies": {
+    "prettier": "^2.8.3"
+  }
+}
