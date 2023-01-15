@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Curso Básico de Programación Orientada a Objetos con JavaScript de Platzi💚",
   "main": "main.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "pretty": "prettier --write \"./**/*.{html,css,js,jsx,json}\""

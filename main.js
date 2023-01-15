@@ -167,3 +167,15 @@ const miguelito2 = new Student({
   instagram: 'miguelito_feliz',
   learningPaths: [escuelaWeb, escuelaData],
 });
+
+/* ---------- PLATZI CLASS ---------- */
+
+import { PlatziClass } from './src/routes/routes.js';
+
+const clase65 = new PlatziClass({
+  name: 'Javascript: orientado a objetos, basado en prototipos',
+  videoID: 'nfdkñmsa;f78dlksf',
+});
+
+clase65.reproducir();
+clase65.pausar();
